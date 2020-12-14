@@ -5,7 +5,7 @@ import time
 import os
 from os import path
 
-timeframe = '2011-08'
+timeframe = '2009-05'
 sql_transaction = []
 start_row = 0
 cleanup = 1000000
@@ -22,7 +22,7 @@ def create_table():
 
 
 def format_data(data):
-    data = data.replace('\n', ' newlinechar ').replace('\r', ' newlinechar ').replace('"', "'")
+    data = data.replace('\n', ' ').replace('\r', ' ').replace('"', "'").replace('&lt;', '<').replace('&gt;', '>').replace('&amp;', '&')
     return data
 
 
@@ -68,9 +68,9 @@ def sql_insert_no_parent(commentid, parentid, comment, subreddit, time, score):
 
 
 def acceptable(data):
-    if len(data.split(' ')) > 100 or len(data) < 1:
+    if len(data.split(' ')) > 100 or len(data) <= 1:
         return False
-    elif len(data) > 10000:
+    elif len(data) > 500:
         return False
     elif data == '[deleted]':
         return False
@@ -129,25 +129,27 @@ if __name__ == "__main__":
             subreddit = row['subreddit']
             comment_id = row['name']
 
-            if acceptable(body) and score >= 1:
+            if acceptable(body) and score >= 3:
                 existing_comment_score = find_existing_score(parent_id)
                 parent_data = find_parent(parent_id)
 
                 if existing_comment_score and score > existing_comment_score:
                     sql_insert_replace_comment(comment_id, parent_id, parent_data, body, subreddit, created_utc, score)
                 else:
-                    if parent_data and score >= 2:
+                    if parent_data:
                         sql_insert_has_parent(comment_id, parent_id, parent_data, body, subreddit, created_utc, score)
                         paired_rows += 1
-                    else:
+                        insertions += 1
+                    elif len(body) >= 10 and len(body.split()) >= 3:
                         sql_insert_no_parent(comment_id, parent_id, body, subreddit, created_utc, score)
-                    insertions += 1
+                        insertions += 1
 
             if row_counter % 100000 == 0:
-                print("Total rows read: {}, Paired rows: {}, Time: {}".format(row_counter, paired_rows, str(datetime.now())))
+                print("Total rows read: {:,}\t Paired rows: {:,}\t Time: {}".format(row_counter, paired_rows, str(datetime.now())))
 
         end_t = time.perf_counter()
 
+        print(f"SUMMARY FOR {timeframe}")
         print(f"Elapsed time: {end_t - start_t:.2f} seconds")
         pair_percent = round(paired_rows / row_counter * 100, 2)
         print(f"Total comments read: {row_counter:,}, Comments inserted: {insertions:,}, Comment pairs: {paired_rows:,}")
