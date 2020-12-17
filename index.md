@@ -20,16 +20,17 @@ Later, we decided we wanted to combine the Reddit comments with more data to cre
 ## Models
 
 ### BRNN
-The first type of seq2seq model we used was Bidirectional Recurrent Neural Networks (BRNN). BRNNs are useful when dealing with sequence data and we want to remember information about what we have already seen. These networks remember past information by having the nodes that correspond to the previous piece of the sequence feed in to the next nodes.
+The first type of seq2seq model we tried used Bidirectional Recurrent Neural Networks (BRNN). BRNNs are useful when dealing with sequential data because not only is it using LSTMs to do well with longer inputs, but it also allows you to take in information from the previous, current, and future words. However, this architecture proves to be very time consuming, given that when working with one million data pairs, three epochs were done in 90 minutes.  
+
 ![Image](BRNN.png) *From Cepero, Jeannot, Pouvrau, and Zouhri in 'Sentence Fusion
-Supervised Project'*\
+Supervised Project'*  \
 
 ### Transformer Model
-The second seq2seq model that we used was a transformer model. Unlike the BRNN that has to take each word a sentence at a time, a transformer uses parallelization and takes in all words at once, which makes it significantly faster. This transformer's architecture takes in the comment/quesion as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
-![Image](trnsfModel.png ) *From Vaswani et al. in ‘Attention Is All You Need’*\
+The second seq2seq model that we used was a transformer model. Unlike the BRNN that has to take each word a sentence at a time, a transformer uses parallelization and takes in all words at once, which makes it significantly faster. This transformer's architecture takes in the comment/question as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
+![Image](trnsfModel.png ) *From Vaswani et al. in ‘Attention Is All You Need’*  
 
 This architecture has an encoder and decoder, which makes it ideal for translation. In this case though, we are "translating" from a comment/question to a response.  
-![Image](encoder-decoder.png) *From Vaswani et al. in ‘Attention Is All You Need’*\
+![Image](encoder-decoder.png) *From Vaswani et al. in ‘Attention Is All You Need’*  
 
 #### Input
 To make the comment or question understandable and informative to the model, each word is tokenized and transformed into a number. 
