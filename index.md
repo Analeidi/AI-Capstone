@@ -1,4 +1,4 @@
-## Mina
+# Mina
 
 You can use the [editor on GitHub](https://github.com/Analeidi/AI-Capstone/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
@@ -27,7 +27,7 @@ The first type of seq2seq model we used was a Recurrent Neural Network (RNN). RN
 
 
 This is the model architecture of a transformer. As stated previously, it takes in a sequence of strings or the comment/question and outputs a sequence of strings or the response.
-![Image](trnsfModel.png = 271x332)
+![Image](trnsfModel.png )
 This architecture has an encoder and decoder, which makes it ideal for translation. In this case though, we are "translating" from a comment or question to a response.  
 ![Image](encoder-decoder.png)
 
