@@ -19,10 +19,11 @@ Later, we decided we wanted to combine the Reddit comments with more data to cre
 
 ### Models
 
+#### BRNN
 The first type of seq2seq model we used was a Recurrent Neural Network (RNN). RNNs are useful when dealing with sequence data and we want to remember information about what we have already seen. These networks remember past information by having the nodes that correspond to the previous piece of the sequence feed in to the next nodes.
 
 
-
+#### Transformer Model
 This is the model architecture of a transformer. As stated previously, it takes in a sequence of strings or the comment/question and outputs a sequence of strings or the response.
 ![Image](trnsfModel.png )
 This architecture has an encoder and decoder, which makes it ideal for translation. In this case though, we are "translating" from a comment or question to a response.  
