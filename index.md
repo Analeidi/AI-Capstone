@@ -68,7 +68,7 @@ The answer goes through the same procedure as the multi-head attention that the 
 
 
 ### Final Product
-To try interacting with Mina yourself, checkout [this Colab notebook](https://colab.research.google.com/drive/18yMHrAgpTHai9qKG_PARiB625PSlZ8Et?usp=sharing) and follow the instructions at the top for getting the files and connecting to your Google drive. You do not have to train the model as it is using the weights we already obtained and stored. At the bottom of the notebook you can interact with Mina questions like so:
+To try interacting with Mina yourself, checkout [this Colab notebook](https://colab.research.google.com/drive/18yMHrAgpTHai9qKG_PARiB625PSlZ8Et?usp=sharing) and follow the instructions at the top for getting the files and connecting to your Google drive. You do not have to train the model as it is using the weights we already obtained and stored. At the bottom of the notebook you can interact with Mina like so:
 
 ```predict("How are you doing?")```
 
