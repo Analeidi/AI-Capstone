@@ -6,12 +6,17 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Introduction
 
+    A popular application of natural language processing is the usage of chatbots,  
 ### Data
 
 
 
 ### Models
-![Image](trnsfModel.png)
+This is the model architecture of a transformer:
+![Image](trnsfModel.png = 271x332)
+This architecture follows an encoder-decoder model
+![Image](encoder-decoder.png = 271x332)
+
 
 
 
