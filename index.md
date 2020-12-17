@@ -1,6 +1,8 @@
 # Mina
 A quirky chatbot
 
+**By: Analeidi Barerra and Corey Pieper**
+
 ## Introduction
 
 Chatbots are a prominent topic within AI which draw on natural language processing, natural language generation, and deep learning. They're application ranges from virtual assistants such as Siri and Alexa to commercial use such as the automated chats you find on websites. For our project, we built a chatbot in TensorFlow using deep learning. To create the chatbot, we focused on a type of model called sequence-to-sequence (seq2seq) models. One of the most successful applications of seq2seq models was for the task of Neural Machine Translation (NMT), or translating between languages using neural networks. However, to apply neural networks to natural language, we first need to find a way to turn words into numbers. A NMT program does this by taking in input text and feeding it through an encoder, which converts it into a "thought" vector that represents the text's meaning. That vector is then passed through a decoder to give a translation.
@@ -20,12 +22,11 @@ Later, we decided we wanted to combine the Reddit comments with more data to cre
 ## Models
 
 ### BRNN
-The first type of seq2seq model we tried using were Bidirectional Recurrent Neural Networks (BRNN). BRNNs are useful when dealing with sequential data because not only is it using LSTMs to do well with longer inputs, but it also allows you to take into consideration the previous, current, and future words. They differ from traditional RNNs in that regular RNNs can only consider previous words, but BRNNs can look both behind and forward (hence the name bidirectional). However, this architecture proves to be very time consuming, given that when working with one million data pairs, three epochs were done in 90 minutes. This is due to the fact that when working with RNNs, information is f
+The first type of seq2seq model we tried using were Bidirectional Recurrent Neural Networks (BRNN). BRNNs are useful when dealing with sequential data because not only is it using LSTMs to do well with longer inputs, but it also allows you to take into consideration the previous, current, and future words. They differ from traditional RNNs in that regular RNNs can only consider previous words, but BRNNs can look both behind and forward (hence the name bidirectional). However, this architecture proves to be very time consuming, given that when working with one million data pairs, three epochs were done in 90 minutes. This is due to the fact that ih RNNs information is fed in sequentially, as the output of the current node depends on the previous node (see image below).
 
 ![Image](BRNN.png)
 
 *Sentdex*
-
 
 ### Transformer Model
 The second seq2seq model that we used was a transformer model. Unlike the BRNN that has to take each word at a time, a transformer uses parallelization and takes in all the words at once, which makes it significantly faster. This transformer's architecture takes in the comment/question as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
@@ -63,51 +64,13 @@ The feed forward layer changes the form of the attention layer, so that it is ac
 Before entering the decoder block, the answer (not the comment/question) goes through the same embedding as the input layer where the words are tokenized and then are given a postional encoding. Once it reaches the decoder, it will go through a masked multi-head attention layer, a normal multi-head attention layer, and a feed forward layer. 
 
 ##### Masked Multi-Head Attention
-The answer goes through the same procedure as the multi-head attention that the comment/question went through, but at this point, the model uses both the answer attention vector and the comment/question attention vector to see what words from the answer relate to that of the comment/question. The reason that there is masking is because the decoder wants to predict what will be the next word in the answer. It can use the previous and current word from the answer as well as all the comment/question words but not the actual answer word. The multi-head attention is similar to this layer but without the masking, and the feed forward layer does tha same thing as it did with the encoder. 
+The answer goes through the same procedure as the multi-head attention that the comment/question went through, but at this point, the model uses both the answer attention vector and the comment/question attention vector to see what words from the answer relate to that of the comment/question. The reason that there is masking is because the decoder wants to predict what will be the next word in the answer. It can use the previous and current word from the answer as well as all the comment/question words but not the actual answer word. The multi-head attention is similar to this layer but without the masking, and the feed forward layer does the same thing as it did with the encoder. 
 
 
 ### Final Product
+To try interacting with Mina yourself, checkout [this Colab notebook](https://colab.research.google.com/drive/18yMHrAgpTHai9qKG_PARiB625PSlZ8Et?usp=sharing) and follow the instructions at the top for getting the files and connecting to your Google drive. You do not have to train the model as it is using the weights we already obtained and stored. At the bottom of the notebook you can interact with Mina questions like so:
+
+```predict("How are you doing?")```
 
 ### Conclusion
-The results of both of the models
-what we could change moving forward
-what is out of our control at the moment
-
-
-
-
-
-
-
-
-
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com//AI-Capstone/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Our chatbot, Mina, is still far from perfect. It deviates from the topic and also repeats several phrases within the response. While we did censor the chatbot, there are inappropriate comments that Mina makes without swearing. This can be attributed to the data that we used to train Mina with. Moving forward, we would like to work with data that comes from different sources as well as having more of it. 
