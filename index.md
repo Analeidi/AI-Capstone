@@ -28,7 +28,7 @@ The first type of seq2seq model we tried used Bidirectional Recurrent Neural Net
 Supervised Project'*
 
 ### Transformer Model
-The second seq2seq model that we used was a transformer model. Unlike the BRNN that has to take each word at a time, a transformer uses parallelization and takes in all words at once, which makes it significantly faster. This transformer's architecture takes in the comment/question as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
+The second seq2seq model that we used was a transformer model. Unlike the BRNN that has to take each word at a time, a transformer uses parallelization and takes in all the words at once, which makes it significantly faster. This transformer's architecture takes in the comment/question as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
 ![Image](trnsfModel.png )  
 
 *From Vaswani et al. in ‘Attention Is All You Need’*  
