@@ -20,16 +20,16 @@ Later, we decided we wanted to combine the Reddit comments with more data to cre
 ## Models
 
 ### BRNN
-The first type of seq2seq model we tried used Bidirectional Recurrent Neural Networks (BRNN). BRNNs are useful when dealing with sequential data because not only is it using LSTMs to do well with longer inputs, but it also allows you to take in information from the previous, current, and future words. However, this architecture proves to be very time consuming, given that when working with one million data pairs, three epochs were done in 90 minutes.  
+The first type of seq2seq model we tried using were Bidirectional Recurrent Neural Networks (BRNN). BRNNs are useful when dealing with sequential data because not only is it using LSTMs to do well with longer inputs, but it also allows you to take into consideration the previous, current, and future words. They differ from traditional RNNs in that regular RNNs can only consider previous words, but BRNNs can look both behind and forward (hence the name bidirectional). However, this architecture proves to be very time consuming, given that when working with one million data pairs, three epochs were done in 90 minutes. This is due to the fact that when working with RNNs, information is f
 
-![Image](BRNN.png)  
+![Image](BRNN.png)
 
-*From Cepero, Jeannot, Pouvrau, and Zouhri in 'Sentence Fusion
-Supervised Project'*
+*Sentdex*
+
 
 ### Transformer Model
 The second seq2seq model that we used was a transformer model. Unlike the BRNN that has to take each word at a time, a transformer uses parallelization and takes in all the words at once, which makes it significantly faster. This transformer's architecture takes in the comment/question as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
-![Image](trnsfModel.png )  
+![Image](trnsfModel.png )    
 
 *From Vaswani et al. in ‘Attention Is All You Need’*  
 
@@ -46,6 +46,11 @@ To make the comment or question understandable and informative to the model, eac
  *Anzor Gozalishvili https://www.anz2.blog/nlp/relations-in-bert-embedding-space/*
 
  After the input embedding, each word goes through a positional encoding which looks specifically to where the word is positioned at in the phrase and thus provides additional context. 
+
+![Image](posEncoding.png.png) 
+
+*By Matthew Barnett*
+
 #### Encoder
 The comment/question is now ready for the encoder! The encoder has two layers: the attention layer and the feed forward layer.
 ##### Multi-Head Attention Layer
