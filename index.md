@@ -52,13 +52,13 @@ Before entering the decoder block, the answer (not the comment/question) goes th
 #### Masked Multi-Head Attention
 The answer goes through the same procedure as the multi-head attention that the comment/question went through, but at this point, the model uses both the answer attention vector and the comment/question attention vector to see what words from the answer relate to that of the comment/question. The reason that there is masking is because the decoder wants to predict what will be the next word in the answer. It can use the previous and current word from the answer as well as all the comment/question words but not the actual answer word. The multi-head attention is similar to this layer but without the masking, and the feed forward layer does tha same thing as it did with the encoder. 
 
-#### Output
-
-
 
 ### Final Product
 
 ### Conclusion
+The results of both of the models
+what we could change moving forward
+what is out of our control at the moment
 
 
 
