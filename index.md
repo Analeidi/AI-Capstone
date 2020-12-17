@@ -24,7 +24,7 @@ The first type of seq2seq model we used was a Recurrent Neural Network (RNN). RN
 
 
 ### Transformer Model
-This is the model architecture of a transformer. As stated previously, it takes in a sequence of strings or the comment/question and outputs a sequence of strings or the response.
+The second seq2seq model that we used was a transformer model. The architecture takes in the comment/quesion as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
 ![Image](trnsfModel.png )
 This architecture has an encoder and decoder, which makes it ideal for translation. In this case though, we are "translating" from a comment or question to a response.  
 ![Image](encoder-decoder.png)
