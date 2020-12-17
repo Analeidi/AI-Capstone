@@ -50,7 +50,7 @@ To make the comment or question understandable and informative to the model, eac
 
  After the input embedding, each word goes through a positional encoding which looks specifically to where the word is positioned at in the phrase and thus provides additional context. 
 
-![Image](posEncoding.png.png) 
+![Image](posEncoding.png) 
 
 *By Matthew Barnett*
 
