@@ -25,13 +25,13 @@ The first type of seq2seq model we used was a Recurrent Neural Network (RNN). RN
 
 ### Transformer Model
 The second seq2seq model that we used was a transformer model. The architecture takes in the comment/quesion as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
-![Image](trnsfModel.png )
+![Image](trnsfModel.png ) *From Vaswani et al. in ‘Attention Is All You Need’*
 This architecture has an encoder and decoder, which makes it ideal for translation. In this case though, we are "translating" from a comment or question to a response.  
 ![Image](encoder-decoder.png)
 
 #### Input
 To make the comment or question understandable and informative to Mina, each word is tokenized and transformed into a number. 
-![Image](Tokenized_Sample.png)
+![Image](Tokenized_Sample.png) 
 
  Even more interestingly, each word that has a close relationship with another will have similar tokens. The embedding space refers to how the tokens will be saved physically closer to each other if they are close in meaning. The following is not from our model but does a good job at demonstrating what embedding space is. 
  ![Image](embedding.png)
