@@ -8,23 +8,30 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 Chatbots are a prominent topic within AI which draw on natural language processing, natural language generation, and deep learning They're application ranges from virtual assistants such as Siri and Alexa to commercial use such as the automated chats you find on websites. For our project, we built a chatbot in TensorFlow using deep learning. To create the chatbot, we focused on a type of model called sequence-to-sequence (seq2seq) models. One of the most successful applications of seq2seq models was for the task of Neural Machine Translation (NMT), or translating between languages using neural networks. However, to apply neural networks to natural language, we first need to find a way to turn words into numbers. A NMT program does this by taking in input text and feeding it through an encoder, which converts it into a "thought" vector that represents the text's meaning. That vector is then passed through a decoder to give a translation.
 
+If you think about it, any model that we can use for translation 
+
 
 ### Data
 
 
 
 ### Models
-This is the model architecture of a transformer. It takes in a sequence and outputs a sequence.
+This is the model architecture of a transformer. As stated previously, it takes in a sequence of strings or the comment/question and outputs a sequence of strings or the response.
 ![Image](trnsfModel.png = 271x332)
-This architecture has an encoder and decoder, which makes it ideal for translation.  
-![Image](encoder-decoder.png = 271x332)
-This design works well for Neural Machine Translation becuase it can encode a given language and then decode it into another. In this case though, we are "translating" from a question or comment to a response.
- 
-#### Let us first focus on the encoder
+This architecture has an encoder and decoder, which makes it ideal for translation. In this case though, we are "translating" from a comment or question to a response.  
+![Image](encoder-decoder.png)
+
 ##### Input
-Mina will take in a sequence of strings. However, we want to make this input be both understandable and informative. Hence, each word is tokenized and transformed into a number. Even more interestingly, each word that has a close relationship with another will have similar tokens. The embedding space refers to how the tokens will be saved physically closer to each other if they are close in meaning. Each word also goes through a positional encoding which gives context based on where the word is positioned at in the phrase.
+Mina will take in a sequence of strings. However, we want to make this input be both understandable and informative. Hence, each word is tokenized and transformed into a number.
+![Image](Tokenized_Sample.png)
+
+ Even more interestingly, each word that has a close relationship with another will have similar tokens. The embedding space refers to how the tokens will be saved physically closer to each other if they are close in meaning. 
+ ![Image](Tokenized_Sample.png)
+
+ Each word also goes through a positional encoding which gives context based on where the word is positioned at in the phrase.
 
 ##### Attention 
+The attention model looks at how important each word is in relation to the other words. Because it is a multi-head attention, each word receives an average vector of its relation to the other words. 
 ##### Feed Forward
 
 #### Decoder
