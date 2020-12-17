@@ -20,8 +20,9 @@ Later, we decided we wanted to combine the Reddit comments with more data to cre
 ## Models
 
 ### BRNN
-The first type of seq2seq model we used was a Recurrent Neural Network (RNN). RNNs are useful when dealing with sequence data and we want to remember information about what we have already seen. These networks remember past information by having the nodes that correspond to the previous piece of the sequence feed in to the next nodes.
-
+The first type of seq2seq model we used was Bidirectional Recurrent Neural Networks (BRNN). BRNNs are useful when dealing with sequence data and we want to remember information about what we have already seen. These networks remember past information by having the nodes that correspond to the previous piece of the sequence feed in to the next nodes.
+![Image](BRNN.png) *From Cepero, Jeannot, Pouvrau, and Zouhri in 'Sentence Fusion
+Supervised Project'*\
 
 ### Transformer Model
 The second seq2seq model that we used was a transformer model. Unlike the BRNN that has to take each word a sentence at a time, a transformer uses parallelization and takes in all words at once, which makes it significantly faster. This transformer's architecture takes in the comment/quesion as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
