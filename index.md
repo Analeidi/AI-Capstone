@@ -34,7 +34,9 @@ The second seq2seq model that we used was a transformer model. Unlike the BRNN t
 *From Vaswani et al. in ‘Attention Is All You Need’*  
 
 This architecture has an encoder and decoder, which makes it ideal for translation. In this case though, we are "translating" from a comment/question to a response.  
-![Image](encoder-decoder.png) *From Vaswani et al. in ‘Attention Is All You Need’*  
+![Image](encoder-decoder.png) 
+
+*From Vaswani et al. in ‘Attention Is All You Need’*  
 
 #### Input
 To make the comment or question understandable and informative to the model, each word is tokenized and transformed into a number. 
