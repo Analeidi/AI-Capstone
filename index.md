@@ -22,12 +22,14 @@ Later, we decided we wanted to combine the Reddit comments with more data to cre
 ### BRNN
 The first type of seq2seq model we tried used Bidirectional Recurrent Neural Networks (BRNN). BRNNs are useful when dealing with sequential data because not only is it using LSTMs to do well with longer inputs, but it also allows you to take in information from the previous, current, and future words. However, this architecture proves to be very time consuming, given that when working with one million data pairs, three epochs were done in 90 minutes.  
 
-![Image](BRNN.png) *From Cepero, Jeannot, Pouvrau, and Zouhri in 'Sentence Fusion
-Supervised Project'*  \
+![Image](BRNN.png)  
+*From Cepero, Jeannot, Pouvrau, and Zouhri in 'Sentence Fusion
+Supervised Project'*  
 
 ### Transformer Model
 The second seq2seq model that we used was a transformer model. Unlike the BRNN that has to take each word a sentence at a time, a transformer uses parallelization and takes in all words at once, which makes it significantly faster. This transformer's architecture takes in the comment/question as an input (bottom left), the reponse as an output (bottom right), which in reality can be thought about as another input, and finally outputs a probability of what the next response word should be.  
-![Image](trnsfModel.png ) *From Vaswani et al. in ‘Attention Is All You Need’*  
+![Image](trnsfModel.png )  
+*From Vaswani et al. in ‘Attention Is All You Need’*  
 
 This architecture has an encoder and decoder, which makes it ideal for translation. In this case though, we are "translating" from a comment/question to a response.  
 ![Image](encoder-decoder.png) *From Vaswani et al. in ‘Attention Is All You Need’*  
@@ -37,7 +39,8 @@ To make the comment or question understandable and informative to the model, eac
 ![Image](Tokenized_Sample.png) 
 
  Even more interestingly, each word that has a close relationship with another will have similar tokens. The embedding space refers to how the tokens will be saved physically closer to each other if they are close in meaning. The following is not from our model but does a good job at demonstrating what embedding space is. 
- ![Image](embedding.png) *Anzor Gozalishvili https://www.anz2.blog/nlp/relations-in-bert-embedding-space/*
+ ![Image](embedding.png)  
+ *Anzor Gozalishvili https://www.anz2.blog/nlp/relations-in-bert-embedding-space/*
 
  After the input embedding, each word goes through a positional encoding which looks specifically to where the word is positioned at in the phrase and thus provides additional context. 
 #### Encoder
