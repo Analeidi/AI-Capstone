@@ -39,7 +39,7 @@ This architecture has an encoder and decoder, which makes it ideal for translati
 
 *From Vaswani et al. in ‘Attention Is All You Need’*  
 
-- Input
+- **Input**
 To make the comment or question understandable and informative to the model, each word is tokenized and transformed into a number. 
 ![Image](Tokenized_Sample.png) 
 
@@ -54,19 +54,19 @@ To make the comment or question understandable and informative to the model, eac
 
 *By Matthew Barnett*
 
-- Encoder  
+- **Encoder**  
 The comment/question is now ready for the encoder! The encoder has two layers: the attention layer and the feed forward layer.
 
-- Multi-Head Attention Layer  
+- Multi-Head Attention Layer
 The attention model looks at how important each word is in relation to the other words. Hence each word will have its own vector and because it is a multi-head attention layer, it will get an average vector of its importance. 
 
-- Feed Forward  
+- Feed Forward
 The feed forward layer changes the form of the attention layer, so that it is acceptable for the coming encoding or decoding block.
  
-- Decoder  
+- **Decoder**  
 Before entering the decoder block, the answer (not the comment/question) goes through the same embedding as the input layer where the words are tokenized and then are given a postional encoding. Once it reaches the decoder, it will go through a masked multi-head attention layer, a normal multi-head attention layer, and a feed forward layer. 
 
-- Masked Multi-Head Attention  
+- Masked Multi-Head Attention
 The answer goes through the same procedure as the multi-head attention that the comment/question went through, but at this point, the model uses both the answer attention vector and the comment/question attention vector to see what words from the answer relate to that of the comment/question. The reason that there is masking is because the decoder wants to predict what will be the next word in the answer. It can use the previous and current word from the answer as well as all the comment/question words but not the actual answer word. The multi-head attention is similar to this layer but without the masking, and the feed forward layer does the same thing as it did with the encoder. 
 
 
