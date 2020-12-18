@@ -39,7 +39,7 @@ This architecture has an encoder and decoder, which makes it ideal for translati
 
 *From Vaswani et al. in ‘Attention Is All You Need’*  
 
-**Input**
+**Input**  
 To make the comment or question understandable and informative to the model, each word is tokenized and transformed into a number. 
 ![Image](Tokenized_Sample.png) 
 
