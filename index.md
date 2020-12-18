@@ -39,7 +39,7 @@ This architecture has an encoder and decoder, which makes it ideal for translati
 
 *From Vaswani et al. in ‘Attention Is All You Need’*  
 
-- **Input**
+**Input**
 To make the comment or question understandable and informative to the model, each word is tokenized and transformed into a number. 
 ![Image](Tokenized_Sample.png) 
 
@@ -63,7 +63,7 @@ The attention model looks at how important each word is in relation to the other
 - Feed Forward
 The feed forward layer changes the form of the attention layer, so that it is acceptable for the coming encoding or decoding block.
  
-- **Decoder**  
+**Decoder**  
 Before entering the decoder block, the answer (not the comment/question) goes through the same embedding as the input layer where the words are tokenized and then are given a postional encoding. Once it reaches the decoder, it will go through a masked multi-head attention layer, a normal multi-head attention layer, and a feed forward layer. 
 
 - Masked Multi-Head Attention
